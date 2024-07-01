@@ -4,7 +4,7 @@ Account Service
 This microservice handles the lifecycle of Accounts
 """
 # pylint: disable=unused-import
-from flask import jsonify, request, make_response, abort, url_for   # noqa; F401
+from flask import jsonify, request, make_response, abort, url_for
 from service.models import Account
 from service.common import status  # HTTP Status Codes
 from . import app  # Import Flask application
@@ -29,7 +29,6 @@ def index():
         jsonify(
             name="Account REST API Service",
             version="1.0",
-            # paths=url_for("list_accounts", _external=True),
         ),
         status.HTTP_200_OK,
     )
@@ -139,8 +138,6 @@ def delete_account(account_id):
 ######################################################################
 #  U T I L I T Y   F U N C T I O N S
 ######################################################################
-
-
 def check_content_type(media_type):
     """Checks that the media type is correct"""
     content_type = request.headers.get("Content-Type")
@@ -151,5 +148,3 @@ def check_content_type(media_type):
         status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
         f"Content-Type must be {media_type}",
     )
-
-    
